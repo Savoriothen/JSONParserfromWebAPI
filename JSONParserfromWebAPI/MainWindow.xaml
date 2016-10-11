@@ -1,0 +1,50 @@
+﻿<Window x:Class="JSONParserfromWebAPI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JSONParserfromWebAPI"
+        mc:Ignorable="d"
+        Title="Json Parser" Height="800" Width="1000">
+    <Grid Margin="10">
+        <DataGrid Name="Broadcasts" AutoGenerateColumns="False" MaxColumnWidth="300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding programme.display_titles.title}" />
+                <DataGridTextColumn Header="Subtitle" Binding="{Binding programme.display_titles.subtitle}" />
+                <DataGridTextColumn Header="Start time" Binding="{Binding start}" />
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel Background="GhostWhite">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Title: " FontWeight="Bold" />
+                            <TextBlock Text="{Binding programme.display_titles.title, Mode=OneWay}" Grid.Column="1" />
+                            <TextBlock Text="Date: " FontWeight="Bold" Grid.Row="1" />
+                            <TextBlock Text="{Binding programme.title, Mode=OneWay}" Grid.Column="1" Grid.Row="1" />
+                            <TextBlock Text="Subtitle: " FontWeight="Bold" Grid.Row="2" />
+                            <TextBlock Text="{Binding programme.display_titles.subtitle, StringFormat=d, Mode=OneWay}" Grid.Column="1" Grid.Row="2" />
+                            <TextBlock Text="Start: " FontWeight="Bold" Grid.Row="3" />
+                            <TextBlock Text="{Binding start, StringFormat=d, Mode=OneWay}" Grid.Column="1" Grid.Row="3" />
+                            <TextBlock Text="End: " FontWeight="Bold" Grid.Row="4" />
+                            <TextBlock Text="{Binding end, StringFormat=d, Mode=OneWay}" Grid.Column="1" Grid.Row="4" />
+                            <TextBlock Text="Duration: " FontWeight="Bold" Grid.Row="5" />
+                            <TextBlock Text="{Binding duration, StringFormat=d, Mode=OneWay}" Grid.Column="1" Grid.Row="5" />
+                        </Grid>
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </Grid>
+</Window>
